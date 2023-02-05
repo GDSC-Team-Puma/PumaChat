@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { getDatabase, ref, set } from "firebase/database";
 
 function writeUserData(name) {
+    if(name == ""){
+        console.log("invalid username");
+        return
+    }
     const db = getDatabase();
     set(ref(db, 'users/' + name),{
         id: 1
     });
+    console.log("user written to database");
+
 }
 
 
@@ -16,7 +22,6 @@ export const Register = (props) => {
         e.preventDefault();
         console.log(username);
         writeUserData(username);
-        console.log("user written to database");
     }
 
     return (
