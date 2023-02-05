@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import { getDatabase, ref, set } from "firebase/database";
+
+function writeUserData(name) {
+    const db = getDatabase();
+    set(ref(db, 'users/' + name),{
+        id: 1
+    });
+}
 
 
 export const Register = (props) => {
@@ -7,6 +15,8 @@ export const Register = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username);
+        writeUserData(username);
+        console.log("user written to database");
     }
 
     return (
