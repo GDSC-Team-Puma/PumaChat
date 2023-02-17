@@ -1,23 +1,22 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import "./App.css";
-import { Login } from "./Login";
-import { Register } from "./Register";
-import { Homepage } from "./Homepage";
+import Homepage from "./components/Homepage";
+import Login from "./components/Login";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [currentForm, setCurrentForm] = useState("login");
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  };
+  const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
-      {currentForm === "login" ? (
-        <Login onFormSwitch={toggleForm} />
+    <div className="app">
+      <NavBar />
+      {!user ? (
+        <Login />
       ) : (
-        <Register onFormSwitch={toggleForm} />
+        <>
+          <Homepage />
+        </>
       )}
     </div>
   );
