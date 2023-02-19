@@ -48,7 +48,7 @@ const Login = () => {
 
   
   return (
-    <div className="container-fluid" style={{ marginTop: "10%" }}>
+    <div className="container-fluid" style={{ marginTop: "35px" }}>
       <div className="row">
         <Card>
           <Card.Body>
