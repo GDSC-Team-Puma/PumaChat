@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import logo from "./logo.svg";
 import "./App.css";
@@ -41,6 +42,27 @@ function App() {
         </div>
       ) : (
         <button onClick={signInWithGoogle}>Sign In with Google</button>
+=======
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import "./App.css";
+import Homepage from "./components/Homepage";
+import Login from "./components/Login";
+import NavBar from "./components/NavBar";
+
+function App() {
+  const [user] = useAuthState(auth);
+
+  return (
+    <div className="app">
+      <NavBar />
+      {!user ? (
+        <Login />
+      ) : (
+        <>
+          <Homepage />
+        </>
+>>>>>>> 4db913c7417846ba46b139285b7832022b3202c5
       )}
     </div>
   );
