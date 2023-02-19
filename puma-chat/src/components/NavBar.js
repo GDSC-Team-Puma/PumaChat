@@ -4,6 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import Button from "react-bootstrap/Button";
 import { signInWithGoogle } from "../firebase";
+// import GoogleButton from "react-google-button"; //to access you need to npm install
+
 
 const NavBar = () => {
   const [user] = useAuthState(auth);

@@ -52,16 +52,9 @@ const Login = () => {
       <div className="row">
         <Card>
           <Card.Body>
-            <Card.Title>User Login</Card.Title>
+            <Card.Title>A new way to chat around the world.</Card.Title>
             <div>
-                
-              <Button
-                variant="outline-primary"
-                type="submit"
-                onClick={signInWithGoogle}
-              >
-                <i className="fab fa-google"></i>Sign-in with Google
-              </Button>
+              Developed by Team Puma.
             </div>
           </Card.Body>
         </Card>
