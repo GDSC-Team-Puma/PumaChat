@@ -5,48 +5,7 @@ import { signInWithGoogle } from "../firebase";
 
 
 const Login = () => {
-  /*
-  const addUser = async () => {
-    console.log("adding new user");
-    const { uid, displayName, photoURL } = auth.currentUser;
-    const userRef = collection(db, "users");
-    const result = await getDocs(query(userRef, where ("uid", "==", uid)));
-    if (result.empty) {
-      await addDoc(collection(db, "users"), {
-        uid,
-        name: displayName,
-        authProvider: "google",
-      });
-    }
-  };
 
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    console.log("reached redirect signin");
-    signInWithRedirect(auth, provider);
-
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        addUser();
-      }
-
-    });
-    
-  };
-
-  useEffect(() => {
-    const unsub = auth.onAuthStateChanged((user) => {
-      if (user) {
-        addUser();
-      }
-    });
-    return unsub;
-  }, []);
-
-  
-  */
-
-  
   return (
     <div className="container-fluid" style={{ marginTop: "35px" }}>
       <div className="row">
