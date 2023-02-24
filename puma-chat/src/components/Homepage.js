@@ -48,54 +48,6 @@ const Homepage = () => {
         </div>
       </div>
     );
-
-/*
-        const db = getFirestore();
-        const userDocRef = doc(collection(db, "users"), user.uid);
-
-        getDoc(userDocRef).then((doc) => {
-            if (doc.exists) {
-                setUserDoc(doc.data());
-            } else {
-                console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.log("error getting document:", error);
-        });
-    }, [user.uid]);
-
-    return (
-        <div className="container-fluid" style={{ marginTop: "10%" }}>
-          <div className="row">
-              <Card.Body>
-                <Card.Title>Welcome</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                    <div>
-                        {userDoc ? (
-                            <div>
-                                <h2>{userDoc.name}</h2>
-                                <p>Email: {userDoc.email}</p>
-                                <p>Name: {userDoc.name}</p>
-                            </div>
-                        ) : (
-                            <p>Loading user document...</p>
-                        )}
-                    </div>
-                </Card.Subtitle>
-                <img src={user.photoURL} alt="" />
-                <Button
-                style={{margin: '5%'}}
-                variant="outline-danger"
-                type="submit"
-                onClick={() => auth.signOut()}
-              >
-                Sign Out
-              </Button>
-              </Card.Body>
-          </div>
-        </div>
-    );
-    */
 };
 
 export default Homepage;
