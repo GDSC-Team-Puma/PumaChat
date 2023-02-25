@@ -84,3 +84,10 @@ button {
 .user-message {
   word-break: break-all;
 }
+.container-fluid{
+  color:aqua  
+  /* for debugging */
+}
+#pfp{
+  width: 1px;
+}

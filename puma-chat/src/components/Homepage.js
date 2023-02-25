@@ -34,19 +34,22 @@ const Homepage = () => {
     }, []);
 
     console.log("Data: ", data);
-
     return (
       <div className="container-fluid" style={{ marginTop: "10%" }}>
+      <div id = "pfp"> <img src = {user.photoURL}></img> </div>
         <div className="row">
           <Card.Title>Welcome</Card.Title>
           <div>
             { data?.map((selected) => (
               <div>{selected.uid == user.uid ? selected.name : ""}</div>
             ))}
-                
+            
           </div>
+          
+
         </div>
       </div>
+      
     );
 };
 
