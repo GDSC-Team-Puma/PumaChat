@@ -84,13 +84,7 @@ button {
 .user-message {
   word-break: break-all;
 }
-.container-fluid{
-  color:aqua  
-  /* for debugging */
-}
-#pfp{
-  width: 1px;
-}
+
 .user-list {
   display:flex;
   flex-direction: column;
@@ -99,4 +93,12 @@ button {
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
+}
+
+.container-fluid{
+  color:aqua  
+  /* for debugging */
+}
+#pfp{
+  width: 1px;
 }
