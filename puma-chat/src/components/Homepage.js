@@ -11,10 +11,16 @@ import { setUserProperties } from 'firebase/analytics';
 import { useAuthState } from "react-firebase-hooks/auth";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import UserSelect from "./UserSelect";
 
 const Homepage = () => {
     const [data, setData] = useState([]);
     const [user] = useAuthState(auth);
+    const [selectedUser, setSelectedUser] = useState(null);
+
+    const handleUserSelection = (user) => {
+        setSelectedUser(user);
+    };
 
 
     useEffect(() => {
@@ -48,6 +54,10 @@ const Homepage = () => {
           
 
         </div>
+        <UserSelect auth={auth} onUserSelection={handleUserSelection} />
+        <p> Selected user: {selectedUser ? selectedUser.name : 'None'} </p>
+
+        
       </div>
       
     );
