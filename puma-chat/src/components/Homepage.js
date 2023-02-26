@@ -56,20 +56,21 @@ const Homepage = () => {
 
 
         </div>
+
         <div className="homepage-elements">
-            <div>
+            <div id = "chatSelection">
+                <UserSelect auth={auth} onUserSelection={handleUserSelection} />
+                <p> Selected user: {selectedUser ? selectedUser.name : 'None'} </p>
+            </div>
+
+            <div id = "message-input">
                 {selectedUser ? (
                     <ChatBox selectedUser={selectedUser}/>
                 ) : (
                     <div></div>
                 )}
             </div>
-            <div>
-                <div id = "chatSelection">
-        <UserSelect auth={auth} onUserSelection={handleUserSelection} />
-                <p> Selected user: {selectedUser ? selectedUser.name : 'None'} </p>
-            </div>
-        </div>
+
         </div>
         
 

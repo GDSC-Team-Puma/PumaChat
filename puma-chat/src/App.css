@@ -18,7 +18,17 @@
   color:rgb(255, 255, 255);
   /* for debugging */
 }
-
+.homepage-elements{
+  gap:10px;
+  color:#edc511;
+}
+#message-input{
+  margin-top: auto;
+  margin-bottom: 50px;
+}
+#send-button{
+  margin-left: 10px;
+}
 .auth-form-container, .login-form, .register-form {
   display: flex;
   flex-direction: column;
