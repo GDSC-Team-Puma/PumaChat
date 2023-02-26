@@ -40,10 +40,11 @@ const Homepage = () => {
     }, []);
 
     console.log("Data: ", data);
+    console.log(user.photoURL);
     return (
       <div className="container-fluid" style={{ marginTop: "10%" }}>
-      <div id = "pfp"> <img src = {user.photoURL}></img> </div>
         <div className="row">
+        <div id = "pfp"> <img src = {user.photoURL}></img> </div>
           <Card.Title>Welcome</Card.Title>
           <div>
             { data?.map((selected) => (
@@ -51,11 +52,14 @@ const Homepage = () => {
             ))}
             
           </div>
-          
+
 
         </div>
+        <div id = "chatSelection">
         <UserSelect auth={auth} onUserSelection={handleUserSelection} />
         <p> Selected user: {selectedUser ? selectedUser.name : 'None'} </p>
+        </div>
+        
 
         
       </div>
