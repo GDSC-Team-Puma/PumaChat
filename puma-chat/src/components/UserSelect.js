@@ -48,7 +48,7 @@ const UserSelect = (props) => {
   };
 
   return (
-    <div clasName="user-list">
+    <div className="user-list">
       <h2>Select a user to chat with:</h2>
       {users.map((user) => (
         <div key={user.id} className="user-item">

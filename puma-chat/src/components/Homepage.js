@@ -12,6 +12,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import UserSelect from "./UserSelect";
+import ChatBox from "./ChatBox";
 
 const Homepage = () => {
     const [data, setData] = useState([]);
@@ -55,9 +56,20 @@ const Homepage = () => {
 
 
         </div>
-        <div id = "chatSelection">
+        <div className="homepage-elements">
+            <div>
+                {selectedUser ? (
+                    <ChatBox selectedUser={selectedUser}/>
+                ) : (
+                    <div></div>
+                )}
+            </div>
+            <div>
+                <div id = "chatSelection">
         <UserSelect auth={auth} onUserSelection={handleUserSelection} />
-        <p> Selected user: {selectedUser ? selectedUser.name : 'None'} </p>
+                <p> Selected user: {selectedUser ? selectedUser.name : 'None'} </p>
+            </div>
+        </div>
         </div>
         
 
