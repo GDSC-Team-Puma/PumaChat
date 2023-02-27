@@ -3,11 +3,14 @@
   color: white;
   background-image: linear-gradient(45deg, rgba(30,41,62,1) 27%, rgba(36,40,32,1) 94%);
 }
+
 .nav-bar{
   display:flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 50px;
+  margin-bottom: -75px; 
+  background-color: #4c768d;
+  padding: 10px 50px;
 }
 
 .container-fluid{
@@ -16,11 +19,16 @@
   align-items: flex-start;
   margin-left: 50px;
   color:rgb(255, 255, 255);
+  gap:20px;
   /* for debugging */
 }
 .homepage-elements{
   gap:10px;
-  color:#edc511;
+  color:#ffffff;
+}
+#welcome-message{
+  display:flex;
+
 }
 #message-input{
   margin-top: auto;

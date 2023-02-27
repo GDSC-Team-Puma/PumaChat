@@ -46,13 +46,17 @@ const Homepage = () => {
       <div className="container-fluid" style={{ marginTop: "10%" }}>
         <div className="row">
         <div id = "pfp"> <img src = {user.photoURL}></img> </div>
-          <Card.Title>Welcome</Card.Title>
-          <div>
+          <div id = "welcome-message">
+            Welcome, 
+            <span>&nbsp;</span> 
+
             { data?.map((selected) => (
-              <div>{selected.uid == user.uid ? selected.name : ""}</div>
+            <div>{selected.uid == user.uid ? selected.name : ""}</div>
             ))}
-            
           </div>
+          
+            
+        
 
 
         </div>

@@ -24,7 +24,7 @@ const NavBar = () => {
       <h1>Puma Chat</h1>
       {user ? (
         <Button
-        style={{margin: '5%'}}
+        // style={{margin: '5%'}}
         variant="outline-danger"
         type="submit"
         onClick={signOut}>
