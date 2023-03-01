@@ -13,6 +13,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import UserSelect from "./UserSelect";
 import ChatBox from "./ChatBox";
+import GlobalChatBox from "./GlobalChatBox";
 
 const Homepage = () => {
     const [data, setData] = useState([]);
@@ -44,34 +45,29 @@ const Homepage = () => {
     console.log(user.photoURL);
     return (
       <div className="container-fluid" style={{ marginTop: "10%" }}>
-        <div className="row">
-        <div id = "pfp"> <img src = {user.photoURL}></img> </div>
-          <div id = "welcome-message">
-            Welcome, 
-            <span>&nbsp;</span> 
+        <div>
+            {selectedUser ? (
+                <p>Connected to a private chat with {selectedUser.name}...</p>
 
-            { data?.map((selected) => (
-            <div>{selected.uid == user.uid ? selected.name : ""}</div>
-            ))}
-          </div>
-          
-            
+            ) : (
+                <p>Connected to global chat...</p>
+            )}
+        </div>
         
 
-
-        </div>
-
         <div className="homepage-elements">
+            
             <div id = "chatSelection">
-                <UserSelect auth={auth} onUserSelection={handleUserSelection} />
-                <p> Selected user: {selectedUser ? selectedUser.name : 'None'} </p>
+                <UserSelect auth={auth} onUserSelection={handleUserSelection} selected={selectedUser}/>
+                <button id="global-chat-btn" onClick={() => {handleUserSelection(null)}}>Global Chat</button>
+                <p id="firebase-tag">Powered by Firebase</p>
             </div>
 
             <div id = "message-input">
                 {selectedUser ? (
                     <ChatBox selectedUser={selectedUser}/>
                 ) : (
-                    <div></div>
+                    <GlobalChatBox/>
                 )}
             </div>
 

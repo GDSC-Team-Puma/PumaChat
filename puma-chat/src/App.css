@@ -1,7 +1,8 @@
 .app {
   min-height: 100vh;
   color: white;
-  background-image: linear-gradient(45deg, rgba(30,41,62,1) 27%, rgba(36,40,32,1) 94%);
+  /* background-image: linear-gradient(45deg, rgba(30,41,62,1) 27%, rgba(36,40,32,1) 94%); */
+  background-image: linear-gradient(45deg, #ffa715 27%, #ffcb2f 94%);
 }
 
 .nav-bar{
@@ -9,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: -75px; 
-  background-color: #4c768d;
+  background-color: #f58410;
   padding: 10px 50px;
 }
 
@@ -22,6 +23,44 @@
   gap:20px;
   /* for debugging */
 }
+
+.user-nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#pfp {
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+
+}
+
+#chatSelection {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#global-chat-btn {
+  display: flex;
+  margin-top: 20px;
+}
+
+#welcome {
+  margin-right: 20px;
+}
+
+.messages {
+  display: flex;
+  max-height: 500px;
+  overflow: scroll;
+  padding: 10px;
+  flex-direction: column-reverse;
+}
+
 .homepage-elements{
   gap:10px;
   color:#ffffff;
@@ -33,10 +72,32 @@
 #message-input{
   margin-top: auto;
   margin-bottom: 50px;
+  width: 100%;
+  padding: 30px;
 }
-#send-button{
+
+#firebase-tag{
+  display: flex;
+  margin-top: 200px;
+  justify-content: center;
+}
+
+.send-message {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.send-button {
   margin-left: 10px;
 }
+
+#messageInput {
+  width: auto;
+  padding: 20px;
+  width: 80%;
+}
+
+
 .auth-form-container, .login-form, .register-form {
   display: flex;
   flex-direction: column;
@@ -81,13 +142,15 @@ button {
 
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
-  padding: 15px;
-  background-color: #7cc5d9;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: #f58410;
   color: #1c2c4c;
   width: max-content;
   max-width: calc(100% - 50px);
   display: flex;
   align-items: flex-start;
+  margin-bottom: 5px;
 }
 
 .chat-bubble.right {
@@ -101,11 +164,14 @@ button {
   height: 35px;
   border-radius: 50%;
   margin-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
 }
 .homepage-elements {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 .user-name {
   font-weight: bold;
@@ -121,7 +187,7 @@ button {
   display:flex;
   flex-direction: column;
   border-style: solid;
-  border-color: aqua;
+  border-color: #f58410;
   border-radius: 10px;
   padding: 10px;
 }

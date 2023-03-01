@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-const SendMessage = (props) => {
+const SendGlobalMessage = (props) => {
     const[message, setMessage] = useState("");
-    console.log(props.selectedUser.uid);
+
     const sendMessage = async (event) => {
         event.preventDefault();
         if (message.trim() === "") {
@@ -13,12 +13,11 @@ const SendMessage = (props) => {
         }
 
         const { uid, displayName, photoURL } = auth.currentUser;
-        await addDoc(collection(db, "messages"), {
+        await addDoc(collection(db, "global_messages"), {
             text: message,
             from: uid,
-            to: props.selectedUser.uid,
-            avatar: photoURL,
             name: displayName,
+            avatar: photoURL,
             createdAt: serverTimestamp(),
         });
         setMessage("");
@@ -38,9 +37,9 @@ const SendMessage = (props) => {
                 value= {message}
                 onChange={(e) => setMessage(e.target.value)}
             />
-            <button className="send-button" type="submit">Send</button>
+            <button type="submit" className = "send-button">Send</button>
         </form>
     );
 };
 
-export default SendMessage;
+export default SendGlobalMessage;

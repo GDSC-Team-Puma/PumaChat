@@ -6,6 +6,7 @@ import {
   where,
   onSnapshot,
   limit,
+  getDocs,
 } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -19,26 +20,84 @@ const ChatBox = (props) => {
   const scroll = useRef();
 
   useEffect(() => {
-    const q = query(
+    let q1 = query(
       collection(db, "messages"),
       orderBy("createdAt"),
-      where("to", "==", props.selectedUser.uid),
-      where("to", "==", currUser.uid),
-      where("from", "==", props.selectedUser.uid),
       where("from", "==", currUser.uid),
+      where("to", "==", props.selectedUser.uid),
       limit(50)
     );
 
-    const unsub = onSnapshot(q, (QuerySnapshot) => {
+    const q2 = query(
+      collection(db, "messages"),
+      orderBy("createdAt"),
+      where("from", "==", props.selectedUser.uid),
+      where("to", "==", currUser.uid),
+      limit(50)
+    );
+
+    // const q = query(
+    //   collection(db, "messages"),
+    //   orderBy("createdAt"),
+    //   limit(50)
+    // );
+
+
+    const receivedUnsub = onSnapshot(q2, (QuerySnapshot) => {
       let messages = [];
       QuerySnapshot.forEach((doc) => {
         messages.push({...doc.data(), id: doc.id});
       });
-      setMessages(messages);
-    });
-    return () => unsub;
-  }, []);
 
+      getDocs(q1).then((QuerySnapshot) => {
+        QuerySnapshot.forEach((doc) => {
+          messages.push({...doc.data(), id: doc.id});
+        });
+
+        messages.sort((a,b) => b.createdAt - a.createdAt);
+
+        setMessages(messages);
+      });
+    });
+
+    const sentUnsub = onSnapshot(q1, (QuerySnapshot) => {
+      let messages = [];
+      QuerySnapshot.forEach((doc) => {
+        messages.push({...doc.data(), id: doc.id});
+      });
+
+      getDocs(q2).then((QuerySnapshot) => {
+        QuerySnapshot.forEach((doc) => {
+          messages.push({...doc.data(), id: doc.id});
+        });
+
+        messages.sort((a,b) => b.createdAt - a.createdAt);
+
+        setMessages(messages);
+      });
+    });
+
+
+    // let unsub = onSnapshot(q1, (QuerySnapshot) => {
+    //   let messages = [];
+    //   QuerySnapshot.forEach((doc) => {
+    //     messages.push({...doc.data(), id:doc.id});
+    //   });
+    //   setMessages(messages);
+
+    // })
+
+    return () => {
+      // unsub();
+      sentUnsub();
+      receivedUnsub();
+      console.log("selected user", props.selectedUser);
+      console.log("messages", messages);
+
+    };
+  }, [props]);
+
+  
   return (
     <div className="chat-box">
       <div className="messages">

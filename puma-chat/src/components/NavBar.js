@@ -9,12 +9,7 @@ import { signInWithGoogle } from "../firebase";
 
 const NavBar = () => {
   const [user] = useAuthState(auth);
-/*
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
-  };
-*/
+
   const signOut = () => {
     auth.signOut();
   };
@@ -23,13 +18,18 @@ const NavBar = () => {
     <nav className = "nav-bar">
       <h1>Puma Chat</h1>
       {user ? (
-        <Button
-        // style={{margin: '5%'}}
-        variant="outline-danger"
-        type="submit"
-        onClick={signOut}>
-            Sign Out
-        </Button>
+        <div className="user-nav">
+          <p id="welcome">Welcome, {user.displayName}</p>
+
+          <img src = {user.photoURL} id="pfp"></img> 
+
+          <Button
+          variant="outline-danger"
+          type="submit"
+          onClick={signOut}>
+              Sign Out
+          </Button>
+        </div>
       ) : (
         <Button
         variant="outline-primary"
