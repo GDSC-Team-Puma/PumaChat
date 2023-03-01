@@ -91,6 +91,11 @@
   margin-left: 10px;
 }
 
+button:hover {
+  background-color: #ff960cfe;
+  transition-duration: 0.3s;
+}
+
 #messageInput {
   width: auto;
   padding: 20px;
