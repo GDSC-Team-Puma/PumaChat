@@ -3,14 +3,11 @@ import Card from "react-bootstrap/Card";
 
 const Login = () => {
   return (
-    <div className="container-fluid" style={{ marginTop: "35px" }}>
+    <div className="description" >
       <div className="row">
-        <Card>
-          <Card.Body>
-            <Card.Title>A new way to chat around the world.</Card.Title>
-            <div>Developed by Team Puma.</div>
-          </Card.Body>
-        </Card>
+       
+            <h1>A new way to chat around the world.</h1> 
+            <h2>Developed by Team Puma.</h2>
       </div>
     </div>
   );

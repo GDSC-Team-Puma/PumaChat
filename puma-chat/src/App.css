@@ -13,7 +13,13 @@
   background-color: #f58410;
   padding: 10px 50px;
 }
-
+.description{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 250px;
+}
 .container-fluid{
   display: flex;
   flex-direction: column;
