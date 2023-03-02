@@ -9,12 +9,10 @@ import {
 import { db } from "../firebase";
 import Message from "./Message";
 import SendGlobalMessage from "./SendGlobalMessage";
-import Homepage from "./Homepage";
 
 const GlobalChatBox = () => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
-
 
   useEffect(() => {
     const q = query(
@@ -28,7 +26,7 @@ const GlobalChatBox = () => {
       QuerySnapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
       });
-      messages.sort((a,b) => b.createdAt - a.createdAt);
+      messages.sort((a, b) => b.createdAt - a.createdAt);
 
       setMessages(messages);
     });
@@ -46,7 +44,6 @@ const GlobalChatBox = () => {
       <span ref={scroll}></span>
       <SendGlobalMessage scroll={scroll} />
     </main>
-    
   );
 };
 

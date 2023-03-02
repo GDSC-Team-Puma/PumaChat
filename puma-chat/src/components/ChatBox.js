@@ -42,19 +42,18 @@ const ChatBox = (props) => {
     //   limit(50)
     // );
 
-
     const receivedUnsub = onSnapshot(q2, (QuerySnapshot) => {
       let messages = [];
       QuerySnapshot.forEach((doc) => {
-        messages.push({...doc.data(), id: doc.id});
+        messages.push({ ...doc.data(), id: doc.id });
       });
 
       getDocs(q1).then((QuerySnapshot) => {
         QuerySnapshot.forEach((doc) => {
-          messages.push({...doc.data(), id: doc.id});
+          messages.push({ ...doc.data(), id: doc.id });
         });
 
-        messages.sort((a,b) => b.createdAt - a.createdAt);
+        messages.sort((a, b) => b.createdAt - a.createdAt);
 
         setMessages(messages);
       });
@@ -63,20 +62,19 @@ const ChatBox = (props) => {
     const sentUnsub = onSnapshot(q1, (QuerySnapshot) => {
       let messages = [];
       QuerySnapshot.forEach((doc) => {
-        messages.push({...doc.data(), id: doc.id});
+        messages.push({ ...doc.data(), id: doc.id });
       });
 
       getDocs(q2).then((QuerySnapshot) => {
         QuerySnapshot.forEach((doc) => {
-          messages.push({...doc.data(), id: doc.id});
+          messages.push({ ...doc.data(), id: doc.id });
         });
 
-        messages.sort((a,b) => b.createdAt - a.createdAt);
+        messages.sort((a, b) => b.createdAt - a.createdAt);
 
         setMessages(messages);
       });
     });
-
 
     // let unsub = onSnapshot(q1, (QuerySnapshot) => {
     //   let messages = [];
@@ -91,13 +89,11 @@ const ChatBox = (props) => {
       // unsub();
       sentUnsub();
       receivedUnsub();
-      console.log("selected user", props.selectedUser);
-      console.log("messages", messages);
-
+      //console.log("selected user", props.selectedUser);
+      //console.log("messages", messages);
     };
   }, [props]);
 
-  
   return (
     <div className="chat-box">
       <div className="messages">
@@ -109,9 +105,6 @@ const ChatBox = (props) => {
       <SendMessage scroll={scroll} selectedUser={props.selectedUser} />
     </div>
   );
-
-
-
 };
 
 export default ChatBox;
