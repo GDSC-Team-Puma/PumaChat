@@ -13,6 +13,7 @@
   background-color: #f58410;
   padding: 10px 50px;
 }
+
 .description{
   display:flex;
   justify-content: center;
@@ -20,6 +21,7 @@
   text-align: center;
   margin-top: 250px;
 }
+
 .container-fluid{
   display: flex;
   flex-direction: column;
@@ -67,14 +69,6 @@
   flex-direction: column-reverse;
 }
 
-.homepage-elements{
-  gap:10px;
-  color:#ffffff;
-}
-#welcome-message{
-  display:flex;
-
-}
 #message-input{
   margin-top: auto;
   margin-bottom: 50px;
@@ -108,21 +102,6 @@ button:hover {
   width: 80%;
 }
 
-
-.auth-form-container, .login-form, .register-form {
-  display: flex;
-  flex-direction: column;
-}
-
-@media screen and (min-width: 600px) {
-  .auth-form-container {
-    padding: 5rem;
-    border: 1px solid white;
-    border-radius: 10px;
-    margin: 0.5rem;
-  }
-}
-
 label {
   text-align: left;
   padding: 0.25rem 0;
@@ -144,13 +123,6 @@ button {
   color: #1b2465;
 }
 
-.link-btn {
-  background: none;
-  color: white;
-  text-decoration: underline;
-}
-
-
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
   padding-right: 10px;
@@ -170,6 +142,7 @@ button {
   background-color: #fff;
 
 }
+
 .chat-bubble__left {
   width: 35px;
   height: 35px;
@@ -179,17 +152,22 @@ button {
   padding-bottom: 10px;
 
 }
+
 .homepage-elements {
   display: flex;
   flex-direction: row;
   width: 100%;
+  gap:10px;
+  color:#ffffff;
 }
+
 .user-name {
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 0.9rem;
   color: #1c2c4c;
 }
+
 .user-message {
   word-break: break-all;
 }
@@ -202,6 +180,7 @@ button {
   border-radius: 10px;
   padding: 10px;
 }
+
 .user-item {
   display: flex;
   align-items: flex-start;

@@ -1,6 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
 import { getFirestore, collection, addDoc, where, query, getDocs } from "firebase/firestore";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
