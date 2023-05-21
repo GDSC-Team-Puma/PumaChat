@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
+import { createNewUserAccount } from "../firebase";
 
 const RegistrationForm = () => {
     const [newUserFullName, setNewUserFullName] = useState("");
     const [newUserEmail, setNewUserEmail] = useState("");
     const [newUserPassword, setNewUserPassword] = useState("");
 
-    const createNewAccount = (event) => {
+    const handleSubmission = (event) => {
         event.preventDefault();
-        if (newUserFullName.trim() === "") {
-            alert("Your name can't be empty!");
-            return;
-        }
-        else if (newUserEmail.trim() === "") {
-            alert("Your email can't be empty!");
-            return;
-        }
-        else if (newUserPassword.trim() === "") {
-            alert("Your password can't be empty!");
-            return;
-        }
-
-        console.log(`The new user's full name is ${newUserFullName}`);
-        console.log(`The new user's email is ${newUserEmail}`);
-        console.log(`The new user's password is ${newUserPassword}`);
-    }
+        createNewUserAccount(newUserFullName, newUserEmail, newUserPassword);
+    };
 
     return (
         <div className="register-form">
             <h1>Register Here!</h1>
             <div className="homepage-fields">
-                <form onSubmit={(event) => createNewAccount(event)}>
+                <form onSubmit={(event) => handleSubmission(event)}>
                     <div className="homepage-form-unit">
                         <label htmlFor="register-form-full-name-field">
                             Enter your full name

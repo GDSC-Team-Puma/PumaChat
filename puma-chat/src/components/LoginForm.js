@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { loginUser } from "../firebase";
 
 const LoginForm = () => {
     const [loginUserEmail, setLoginUserEmail] = useState("");
     const [loginUserPassword, setLoginUserPassword] = useState("");
 
-    const loginUser = (event) => {
+    /*const loginUser = (event) => {
         event.preventDefault();
         if (loginUserEmail.trim() === "") {
             alert("Your email can't be empty!");
@@ -17,13 +18,18 @@ const LoginForm = () => {
 
         console.log(`The logged in user's email is ${loginUserEmail}`);
         console.log(`The logged in user's password is ${loginUserPassword}`);
-    }
+    }*/
+
+    const handleSubmission = (event) => {
+        event.preventDefault();
+        loginUser(loginUserEmail, loginUserPassword);
+    };
 
     return (
         <div className="login-form">
             <h1>Login Here!</h1>
             <div className="homepage-fields">
-                <form onSubmit={(event) => loginUser(event)}>
+                <form onSubmit={(event) => handleSubmission(event)}>
                     <div className="homepage-form-unit">
                         <label htmlFor="login-form-email-field">
                             Email
