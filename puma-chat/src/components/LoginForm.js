@@ -5,7 +5,7 @@ import { loginUser, db} from "../firebase";
 const LoginForm = () => {
     const [loginUserEmail, setLoginUserEmail] = useState("");
     const [loginUserPassword, setLoginUserPassword] = useState("");
-    const [bottomLineText, setBottomLineText] = useState("LOG IN HELLO WORLD");
+    const [bottomLineText, setBottomLineText] = useState("");
 
     const handleSubmission = async (event) => {
         event.preventDefault();
