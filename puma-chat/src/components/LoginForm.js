@@ -1,28 +1,40 @@
 import React, { useState } from "react";
-import { loginUser } from "../firebase";
+import {collection, where, query, getDocs} from "firebase/firestore";
+import { loginUser, db} from "../firebase";
 
 const LoginForm = () => {
     const [loginUserEmail, setLoginUserEmail] = useState("");
     const [loginUserPassword, setLoginUserPassword] = useState("");
+    const [bottomLineText, setBottomLineText] = useState("LOG IN HELLO WORLD");
 
-    /*const loginUser = (event) => {
+    const handleSubmission = async (event) => {
         event.preventDefault();
         if (loginUserEmail.trim() === "") {
-            alert("Your email can't be empty!");
+            setBottomLineText("Your login email can't be empty!");
             return;
         }
-        else if (loginUserPassword.trim() === "") {
-            alert("Your password can't be empty!");
+        else if (loginUserPassword.trim() === ""){
+            setBottomLineText("Your login password can't be empty!");
             return;
         }
 
-        console.log(`The logged in user's email is ${loginUserEmail}`);
-        console.log(`The logged in user's password is ${loginUserPassword}`);
-    }*/
-
-    const handleSubmission = (event) => {
-        event.preventDefault();
-        loginUser(loginUserEmail, loginUserPassword);
+        //Check to make sure the email and password exist in the Cloud Firestore "users" database.
+        try {
+            const usersDatabase = collection(db, "users");
+            const result = await getDocs(query(usersDatabase, where ("email", "==", loginUserEmail)));
+            if (result.empty){
+                setBottomLineText("Account with this email not found!");
+                return;
+            }
+            const loginUserDoc = result.docs[0];
+            if (loginUserDoc.data().password !== loginUserPassword){
+                setBottomLineText("Password doesn't match the account!");
+                return;
+            }
+            loginUser(loginUserEmail, loginUserPassword);
+        } catch(err) {
+            alert(err.message);
+        }
     };
 
     return (
@@ -56,10 +68,11 @@ const LoginForm = () => {
                             value={loginUserPassword}
                             onChange={(e) => setLoginUserPassword(e.target.value)}
                         />
-                        <button className="homepage-form-submit-button" type="submit">
-                            Start Chatting
-                        </button>
                     </div>
+                    <p className="bottom-line">{bottomLineText}</p>
+                    <button className="homepage-form-submit-button" type="submit">
+                        Start Chatting
+                    </button>
                 </form>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, where, query, getDocs, doc, getDoc} from "firebase/firestore";
+import { getFirestore, collection, addDoc, where, query, getDocs} from "firebase/firestore";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
@@ -69,6 +69,7 @@ export const createNewUserAccount = async (newUserFullName, newUserEmail, newUse
         console.log("New user signed in via creating an account via registration form");
         console.log(`The new user's name is ${newUserFullName}`);
         console.log(`The new user's email is ${newUserEmail}`);
+        //by default, createUserWithEmailAndPassword signs the user in, so log out by default.
         auth.signOut();
     } catch (err) {
         alert(err.message);

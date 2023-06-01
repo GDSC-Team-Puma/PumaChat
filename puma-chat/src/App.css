@@ -25,9 +25,10 @@
 
 .registration-login-forms {
   display: flex;
+  color: black;
   width: 90%;
   justify-content: space-around;
-  background: green;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 25px;
 }
 
@@ -40,7 +41,6 @@
   display: flex;
   padding: 25px;
   justify-content: center;
-  background: darkcyan;
   border-radius: 25px;
   margin-bottom: 10px;
 }
@@ -54,8 +54,15 @@
   width: 300px;
 }
 
+.bottom-line {
+  font-size: 1.5rem;
+  color: red;
+  text-align: center;
+}
+
 .homepage-form-submit-button {
   margin-top: 20px;
+  background-color: #f58410;
 }
 
 .homepage-form-submit-button:hover {
