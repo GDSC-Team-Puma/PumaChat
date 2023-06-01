@@ -6,12 +6,16 @@ const RegistrationForm = () => {
     const [newUserEmail, setNewUserEmail] = useState("");
     const [newUserPassword, setNewUserPassword] = useState("");
     const [newUserConfirmPassword, setNewUserConfirmPassword] = useState("");
-    const [bottomLineText, setBottomLineText] = useState("REGISTER HELLO WORLD");
+    const [bottomLineText, setBottomLineText] = useState("");
 
     const handleSubmission = (event) => {
         event.preventDefault();
         if (newUserFullName.trim() === "") {
             setBottomLineText("Your full name can't be empty!");
+            return;
+        }
+        else if (!newUserFullName.includes(" ")){
+            setBottomLineText("You must enter a last name!");
             return;
         }
         else if (newUserEmail.trim() === ""){
